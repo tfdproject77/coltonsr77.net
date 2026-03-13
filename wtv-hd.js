@@ -1,6 +1,6 @@
 'use strict';
 /*
-	WebTV HD compatibility script - See https://github.com/SKCro/WebTV-HD for details.
+	WebTV HD compatibility script - See https://github.com/coltonsr77/WebTV-HD-Updated for details.
 
 	Add this script to every page on your site to make it more compatible with WebTV HD.
 	/!\ Place the script at the very end of the body so everything can load in beforehand, otherwise you'll probably get errors - the script relies on the page being fully loaded in beforehand. /!\
@@ -13,7 +13,7 @@
 */
 
 //Verify if the iframe is actually WebTV HD before sending metadata - yes, I know this security method is lame. I'll probably tighten it up later, but for now, it's good for testing.
-//I should probably limit the message source to the current instance of WebTV HD, which is at https://skcro.github.io/WebTV-HD, although I'll also be hosting the beta version, so it would break if I did that. I dunno.
+//I should probably limit the message source to the current instance of WebTV HD, which is at https://coltonsr77.github.io/WebTV-HD-Updated, although I'll also be hosting the beta version, so it would break if I did that. I dunno.
 if(window.self!==window.top){//If the current window isn't the top one...
 	parent.postMessage({type:'QueryForWebTVHD'},'*');//Post a message querying for WebTV HD...
 	addEventListener('message',doInit);//Then once that message is recieved, start other functions
