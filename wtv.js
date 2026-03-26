@@ -7,7 +7,7 @@
 	This script will send basic metadata (page title and address) to WTV-HD and WTV and enable exclusive functionality once verified.
 
 	Note that this script redefines alert() in a way that doesn't block script execution while the message is shown, so keep that in mind. See line 23.
-
+    Credits: SkCro: Made the OG Script coltonsr77: Made important changes
 	Yes, I know, the code is a mess. I'm sorry.
 */
 
