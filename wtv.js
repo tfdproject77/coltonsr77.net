@@ -4,10 +4,10 @@
 
 	Add this script to every page on your site to make it more compatible with WebTV HD and WebTV.
 	/!\ Place the script at the very end of the html page so everything can load in beforehand, otherwise you'll probably get errors - the script relies on the page being fully loaded in beforehand. /!\
-	This script will send basic metadata (page title and address) to WTV-HD and WTV and enable exclusive functionality once verified.
+	This script will send basic metadata (page title and address) to WebTV-HD and WebTV and enable exclusive functionality once verified.
 
 	Note that this script redefines alert() in a way that doesn't block script execution while the message is shown, so keep that in mind. See line 23.
- Credits: SKCro: Made the OG Script coltonsr77: Made important changes
+   Credits: SKCro: Made the OG Script coltonsr77: Made important changes
 	Yes, I know, the code is a mess. I'm sorry.
 */
 
