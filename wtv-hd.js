@@ -132,8 +132,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 			parent.postMessage({type:'hideAudioscope'},'*');
 		});
 
-		//Make the Del key open the options bar - remove if you don't want this functionality
-		document.addEventListener('keydown',function(e){if(e.keyCode===46){e.preventDefault();parent.postMessage({type:'showOptionsBar'},'*');parent.focus();}});
+
 
 		//Scan for and attach the clickable attribute to all clickable elements - just anchors and stuff with an inline onClick handler for now
 		//To opt a tag out of being clickable, add the "noselect" class to it - it will still have the clickable class attached (and thus, will still play click sounds) but the selection box won't highlight it
