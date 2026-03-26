@@ -18,7 +18,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 	parent.postMessage({type:'QueryForWebTVHD'},'*');//Post a message querying for WebTV HD...
 	addEventListener('message',doInit);//Then once that message is recieved, start other functions
 	function doInit(e){
-		if(e.data&&e.data.type==='Yes, I am the real SKCro!'){
+		if(e.data&&e.data.type==='Yes, I am the real coltonsr77!'){
 			init();
 			removeEventListener('message',doInit);
 		}
@@ -126,7 +126,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 		}
 		addEventListener('message',handleMessage);
 
-		//Loading indicator code - when the page hides via navigation, tell WTV-HD so it can show the loading indicator and hide the audioscope (if necessary)
+		//Loading indicator code - when the page hides via navigation, tell WTV so it can show the loading indicator and hide the audioscope (if necessary)
 		addEventListener('pagehide',function(){
 			parent.postMessage({type:'loading'},'*');
 			parent.postMessage({type:'hideAudioscope'},'*');
