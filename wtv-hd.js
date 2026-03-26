@@ -1,13 +1,12 @@
 'use strict';
 /*
-	WebTV HD compatibility script - See https://github.com/coltonsr77/WebTV-HD-Updated for details.
+	WebTV compatibility script - See https://github.com/coltonsr77/WebTV-HD-Updated for details.
 
-	Add this script to every page on your site to make it more compatible with WebTV HD (This script somehow works with WebTV).
-	/!\ Place the script at the very end of the body so everything can load in beforehand, otherwise you'll probably get errors - the script relies on the page being fully loaded in beforehand. /!\
-	This script will send basic metadata (page title and address) to WTV-HD and enable exclusive functionality once verified.
+	Add this script to every page on your site to make it more compatible with WebTV HD and WebTV.
+	/!\ Place the script at the very end of the html page so everything can load in beforehand, otherwise you'll probably get errors - the script relies on the page being fully loaded in beforehand. /!\
+	This script will send basic metadata (page title and address) to WTV-HD and WTV and enable exclusive functionality once verified.
 
 	Note that this script redefines alert() in a way that doesn't block script execution while the message is shown, so keep that in mind. See line 23.
-	It also remaps the "Del" key (not backspace) to open the options bar. See line 129.
 
 	Yes, I know, the code is a mess. I'm sorry.
 */
@@ -131,8 +130,6 @@ if(window.self!==window.top){//If the current window isn't the top one...
 			parent.postMessage({type:'loading'},'*');
 			parent.postMessage({type:'hideAudioscope'},'*');
 		});
-
-
 
 		//Scan for and attach the clickable attribute to all clickable elements - just anchors and stuff with an inline onClick handler for now
 		//To opt a tag out of being clickable, add the "noselect" class to it - it will still have the clickable class attached (and thus, will still play click sounds) but the selection box won't highlight it
