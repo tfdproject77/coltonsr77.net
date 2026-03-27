@@ -11,8 +11,6 @@
 	Yes, I know, the code is a mess. I'm sorry.
 */
 
-//Verify if the iframe is actually WebTV HD before sending metadata - yes, I know this security method is lame. I'll probably tighten it up later, but for now, it's good for testing.
-//I should probably limit the message source to the current instance of WebTV HD, which is at https://coltonsr77.github.io/WebTV-HD-Updated, although I'll also be hosting the beta version, so it would break if I did that. I dunno.
 if(window.self!==window.top){//If the current window isn't the top one...
 	// Query parent for known WebTV hosts (cover older MSNTV/WebTV hosts)
 	parent.postMessage({type:'QueryForWebTV'},'*');
@@ -78,7 +76,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 		}
 		window.linkHandler=function(url){location.href=url;}//Useful for buttons or other clickable things that don't support href
 
-		//Page name updater - monitors page title and reports any changes back to WebTV-HD
+		//Page name updater - monitors page title and reports any changes back to WebTV
 		function updatePageName(){parent.postMessage({type:'title',title:document.title},'*');}//Send a message to the parent iframe with the current document title
 		function trackName(){
 			updatePageName();//Send page name once updates are detected
@@ -114,7 +112,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 			if(displayOptions.includes('noScroll')){console.debug('Scrolling disabled - noScroll is set in the display tag.');document.querySelector('html').style.overflow='hidden';document.body.style.overflow='hidden';}
 			if(displayOptions.includes('noStatus')){parent.postMessage({type:'display',attribute:'noStatus'},'*');}
 			if(displayOptions.includes('noMusic')){parent.postMessage({type:'display',attribute:'noMusic'},'*');}
-		}else{parent.postMessage({type:'display',attribute:'none'},'*');}//If there isn't any display tag, just post none so WebTV-HD knows that the page doesn't have any special properties
+		}else{parent.postMessage({type:'display',attribute:'none'},'*');}//If there isn't any display tag, just post none so WebTV knows that the page doesn't have any special properties
 
 		/* <bgsound> tag reimplementation
 			HOW TO USE:
@@ -126,7 +124,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 		if(bgsound){//If the bgsound tag exists...
 			const bgsoundSrc=bgsound.getAttribute('content');//Get its content...
 			if(bgsoundSrc){parent.postMessage({type:'bgsound',source:bgsoundSrc},'*');}//...and post a message if a source is found
-		}else{parent.postMessage({type:'bgsound',source:'none'},'*');}//If there isn't any display tag, just post none so WebTV-HD knows that the page doesn't have any bgmusic
+		}else{parent.postMessage({type:'bgsound',source:'none'},'*');}//If there isn't any display tag, just post none so WebTV knows that the page doesn't have any bgmusic
 
 		// Implement simple find() and print() helpers referenced by WebTV
 		function find(term){
@@ -159,7 +157,7 @@ if(window.self!==window.top){//If the current window isn't the top one...
 		}
 
 		//Message handlers
-		function handleMessage(e){//Listen for messages from WebTV HD
+		function handleMessage(e){//Listen for messages from WebTV
 			try{
 				if(!e || !e.data || !e.data.type) return;
 				switch(e.data.type){
@@ -173,8 +171,8 @@ if(window.self!==window.top){//If the current window isn't the top one...
 					case 'doAlertAction':eval(tempAction);tempAction='';break;//If the message is "doAlertAction", execute the code set earlier by an alert and clear the action
 					case 'find'://If the message is "find", and we have a search term...
 						const term=find(e.data.term);//...look for the term on the page and highlight it if we found it
-						if(term){parent.postMessage({type:'matchFound'},'*');}//If the term was found, tell WebTV-HD that we found the term (which closes the find panel)
-						else{parent.postMessage({type:'noMatchFound'},'*');}//Or, if we didn't find it, tell WebTV-HD just that (which brings up an error message)
+						if(term){parent.postMessage({type:'matchFound'},'*');}//If the term was found, tell WebTV that we found the term (which closes the find panel)
+						else{parent.postMessage({type:'noMatchFound'},'*');}//Or, if we didn't find it, tell WebTV just that (which brings up an error message)
 					break;
 					case 'print':print();break;//If the message is "print", prompt the user to print the page
 					case 'reload':location.reload();break;//If the message is "reload" or "forceReload", reload the page, clearing the cache if necessary
