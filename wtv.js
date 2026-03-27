@@ -4,7 +4,7 @@
 
 	Add this script to every page on your site to make it more compatible with WebTV.
 	/!\ Place the script at the very end of the html page so everything can load in beforehand, otherwise you'll probably get errors - the script relies on the page being fully loaded in beforehand. /!\
-	This script will send basic metadata (page title and address) to WebTV-HD and WebTV and enable exclusive functionality once verified.
+	This script will send basic metadata (page title and address) to WebTV and enable exclusive functionality once verified.
 
 	Note that this script redefines alert() in a way that doesn't block script execution while the message is shown, so keep that in mind. See line 23.
    Credits: SKCro: Made the OG Script coltonsr77: Made important changes
@@ -14,7 +14,7 @@
 //Verify if the iframe is actually WebTV HD before sending metadata - yes, I know this security method is lame. I'll probably tighten it up later, but for now, it's good for testing.
 //I should probably limit the message source to the current instance of WebTV HD, which is at https://coltonsr77.github.io/WebTV-HD-Updated, although I'll also be hosting the beta version, so it would break if I did that. I dunno.
 if(window.self!==window.top){//If the current window isn't the top one...
-	// Query parent for known WebTV hosts (cover WebTV-HD and older MSNTV/WebTV hosts)
+	// Query parent for known WebTV hosts (cover older MSNTV/WebTV hosts)
 	parent.postMessage({type:'QueryForWebTV'},'*');
 	parent.postMessage({type:'QueryForMSNTV'},'*');
 	window._wtv_inited = false;
