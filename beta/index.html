@@ -1,3 +1,223 @@
 <!DOCTYPE html>
-<html>
-<p> Enter the password to access this version</p>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --header-bg: #222;
+      --header-text: #fff;
+      --card-bg: #fff;
+      --footer-bg: #222;
+      --footer-text: #fff;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --header-bg: #1e1e1e;
+      --header-text: #f1f1f1;
+      --card-bg: #1c1c1c;
+      --footer-bg: #1e1e1e;
+      --footer-text: #f1f1f1;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: var(--header-text);
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #theme-toggle {
+      background: none;
+      border: 1px solid var(--header-text);
+      color: var(--header-text);
+      margin-left: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #theme-toggle:hover {
+      background: var(--header-text);
+      color: var(--header-bg);
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .projects article {
+      background: var(--card-bg);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    form label {
+      margin-top: 1rem;
+    }
+
+    form input, form textarea {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    form button {
+      margin-top: 1rem;
+      padding: 0.7rem;
+      border: none;
+      background: var(--header-bg);
+      color: var(--header-text);
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    form button:hover {
+      background: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Website</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="http://coltonsr77.net/Download">Download</a>
+      <a href="http://webtv.coltonsr77.net/">WebTV Remix</a>
+      <a href="http://coltonsr77.net/Tickets">Tickets</a>
+      <a href="https://server.coltonsr77.net/">Server</a>
+      <a href="https://coltonsr77.straw.page">Straw Page</a>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>This site showcases my projects, download pages, and installers. Scroll down to see my projects!</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <article>
+        <h3>Server Helper (DISCORD)</h3>
+        <p>It can read the rules for MDC and help you make tickets.</p>
+        <a href="http://coltonsr77.net/server-helper.html" class="btn">More Info</a>
+      </article>
+
+      <article>
+        <h3>Uzi Doorman (DISCORD)</h3>
+        <p>A Roleplay bot that roleplays as Uzi Doorman from MD.</p>
+        <a href="http://coltonsr77.net/uzi-doorman.html" class="btn">More Info</a>
+      </article>
+
+      <article>
+        <h3>MD:The Future Drones</h3>
+        <p>A fanshow that i am taking a break on till 2026.</p>
+        <a href="https://tfd.coltonsr77.net" class="btn">View Project</a>
+      </article>
+
+      <article>
+        <h3>Windows Home Server 2011 R2</h3>
+        <p>A upgraded version of WHS 2011</p>
+        <a href="http://coltonsr77.net/WHS-2011-R2.html" class="btn">View Project</a>
+      </article>
+
+      <article>
+        <h3>WebTV HD Updated</h3>
+        <p>A upgraded version of WebTV HD</p>
+        <a href="https://coltonsr77.github.io/WebTV-HD-Updated" class"btn">View Project</a>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 - coltonsr77</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // Check saved preference
+    if(localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      if(body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        toggleBtn.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.textContent = "🌙";
+      }
+    });
+  </script>
+</body>
+</html>
+<script src="wtv.js"></script>
